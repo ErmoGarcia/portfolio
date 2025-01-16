@@ -2,10 +2,12 @@
     <header>
         <div class="hero">
             <div class="hero__background"></div>
-            <hgroup class="hero__heading">
-                <h1 class="hero__title">Hi, I'm Guillermo</h1>
-                <p class="hero__subtitle">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span>.</p>
-            </hgroup>
+            <div class="hero__heading--animated">
+                <hgroup class="hero__heading">
+                    <h1 class="hero__title">Hi, I'm Guillermo</h1>
+                    <p class="hero__subtitle">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span>.</p>
+                </hgroup>
+            </div>
         </div>
     </header>
 </template>
@@ -16,9 +18,15 @@ const { scrollY } = useScroll();
 watch(scrollY, (value) => {
     const sensitivity = 500;
     const scale = 1 + value / sensitivity;
+
     const imageElement = document.querySelector('.hero__background') as HTMLElement;
     if (imageElement) {
       imageElement.style.transform = `scale(${scale})`;
+    }
+
+    const headingElement = document.querySelector('.hero__heading') as HTMLElement;
+    if (headingElement) {
+      headingElement.style.transform = `translate(0, ${value}px)`;
     }
 })
 </script>
@@ -53,6 +61,9 @@ watch(scrollY, (value) => {
 .hero__heading {
     max-width: 700ch;
     font-family: Cincel, sans-serif;
+}
+
+.hero__heading--animated {
     transform: translate(0, -500%);
     animation: showHeading 3s ease-in-out forwards;
 }
