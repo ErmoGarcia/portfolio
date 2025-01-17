@@ -1,8 +1,8 @@
 <template>
-    <section class="about-section">
-        <h1>About Me</h1>
-        <p>
-            Hello! I'm [Your Name], a passionate [Your Profession] with experience in [Your Skills/Technologies].
+    <section class="about">
+        <h1 class="about__title">About Me</h1>
+        <p class="about__description">
+            Hello! I'm Guillermo García Grao, a passionate <span class="about__keyword">Software Engineer</span> and <span class="about__keyword">Full-Stack Developer</span> with experience in <span class="about__keyword">Javascript</span> and <span class="about__keyword">Python</span>.
             I love creating innovative solutions and working on exciting projects.
         </p>
     </section>
@@ -15,20 +15,22 @@ export default {
 </script>
 
 <style scoped>
-.about-section {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
+.about {
+    padding: 2rem;
     text-align: center;
 }
 
-.about-section h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
+.about__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-.about-section p {
-    font-size: 1.2em;
-    color: #333;
+.about__description {
+    font-size: 1.2rem;
+}
+
+.about__keyword {
+    font-weight: bold;
+    color: var(--primary-color);
 }
 </style>
