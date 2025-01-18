@@ -13,7 +13,7 @@
               :style="{ transform: `scale(${scale})` }"
             ></NuxtImg>
           </div>
-          <div v-if="loading" class="hero__cover" :class="{ 'hero__cover--animated': loading }"></div>
+          <div class="hero__cover" :class="{ 'hero__cover--animated': !loading }"></div>
           <div :style="{ transform: `translate(0, ${scrollY}px)` }">
               <hgroup class="hero__heading">
                   <h1 class="hero__title"><span class="hero__title--animated">Hi,</span><span class="hero__title--animated-after"> I'm Guillermo!</span></h1>
@@ -51,7 +51,7 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   left: 0;
   right: 0;
   bottom: 0;
-  filter: grayscale(90%) blur(0);
+  filter: grayscale(90%) blur(2px);
 }
 
 .hero__banner img {
@@ -110,12 +110,51 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 }
 
 @media screen and (min-width: 768px) {
-  .hero__banner {
-    transform: scale(1);
-    transition: transform 0.1s ease-out;
-  }
   .hero__banner::after {
     background: linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.6) 60%);
+  }
+}
+
+.hero__cover--animated {
+  opacity: 1;
+  animation: 1s ease 4s forwards fadeOut;
+}
+
+.hero__title--animated {
+  opacity: 0;
+  transform: translateY(-1rem);
+  animation: 1s ease 1s forwards fadeIn;
+}
+
+.hero__title--animated-after {
+  opacity: 0;
+  transform: translateY(-1rem);
+  animation: 1s ease 2s forwards fadeIn;
+}
+
+.hero__subtitle--animated {
+  opacity: 0;
+  transform: translateY(-1rem);
+  animation: 1s ease 3s forwards fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 </style>

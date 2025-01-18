@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar">
+    <nav class="navbar navbar--animated">
         <div class="navbar__wrapper">
             <button class="navbar__hamburger">
                 <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -124,6 +124,20 @@ const navigation = ref([
     .navbar__menu ul li {
         margin: 0;
         font-size: 1rem;
+    }
+}
+
+.navbar--animated {
+    transform: translateY(-100%);
+    animation: 1s ease 4s forwards slideIn;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
     }
 }
 </style>
