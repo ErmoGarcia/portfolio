@@ -2,10 +2,12 @@
   <div>
     <NuxtLayout>
       <Hero />
-      <SectionsAbout />
-      <SectionsProjects />
-      <SectionsSkills />
-      <SectionsContact />
+      <MainContent>
+        <SectionsAbout />
+        <SectionsProjects />
+        <SectionsSkills />
+        <SectionsContact />
+      </MainContent>
     </NuxtLayout>
   </div>
 </template>

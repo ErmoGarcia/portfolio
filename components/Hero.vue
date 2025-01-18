@@ -9,33 +9,23 @@
               format="webp"
               preload
               loading="eager"
-              @load="() => loadingImg = false"
+              @load="() => loading = false"
               :style="{ transform: `scale(${scale})` }"
             ></NuxtImg>
           </div>
+          <div v-if="loading" class="hero__cover" :class="{ 'hero__cover--animated': loading }"></div>
           <div :style="{ transform: `translate(0, ${scrollY}px)` }">
               <hgroup class="hero__heading">
-                  <h1 class="hero__title">Hi, I'm Guillermo</h1>
-                  <p class="hero__subtitle">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span></p>
+                  <h1 class="hero__title"><span class="hero__title--animated">Hi,</span><span class="hero__title--animated-after"> I'm Guillermo!</span></h1>
+                  <p class="hero__subtitle hero__subtitle--animated">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span></p>
               </hgroup>
-          </div>
-        </div>
-        <div class="hero__loader" v-if="loading">
-          <div>
-            <h1>Wellcome!</h1>
-            <Spinner />
           </div>
         </div>
     </header>
 </template>
 
 <script setup lang="ts">
-const loadingImg = ref(true);
-const loadingTimer = ref(true);
-setTimeout(() => {
-  loadingTimer.value = false;
-}, 2500);
-const loading = computed(() => loadingImg.value || loadingTimer.value);
+const loading = ref(true);
 
 const { scrollY } = useScroll();
 const sensitivity = 500;
@@ -62,7 +52,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   right: 0;
   bottom: 0;
   filter: grayscale(90%) blur(0);
-  animation: blurEffect 7s ease-in-out forwards;
 }
 
 .hero__banner img {
@@ -87,8 +76,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   padding: 1rem;
   max-width: 700ch;
   font-family: Cincel, sans-serif;
-  transform: translate(0, -100vh);
-  animation: showHeading 7s ease-in-out forwards;
 }
 
 .hero__title {
@@ -109,8 +96,7 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   white-space: nowrap;
 }
 
-.hero__loader {
-  z-index: 20;
+.hero__cover {
   position: absolute;
   top: 0;
   left: 0;
@@ -123,12 +109,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   text-align: center;
 }
 
-.hero__loader h1 {
-  color: white;
-  font-family: 'Lobster', cursive;
-  font-size: 3rem;
-}
-
 @media screen and (min-width: 768px) {
   .hero__banner {
     transform: scale(1);
@@ -136,33 +116,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   }
   .hero__banner::after {
     background: linear-gradient(90deg, rgba(0,0,0,1) 20%, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.6) 60%);
-  }
-}
-
-@keyframes blurEffect {
-  0% {
-    filter: grayscale(90%) blur(0);
-  }
-  50% {
-    filter: grayscale(90%) blur(0);
-  }
-  100% {
-    filter: grayscale(90%) blur(10px);
-  }
-}
-
-@keyframes showHeading {
-  0% {
-    opacity: 0;
-    transform: translate(0, -500%);
-  }
-  50% {
-    opacity: 0;
-    transform: translate(0, -500%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0);
   }
 }
 </style>

@@ -35,8 +35,6 @@ const links = [
 
 .footer__link {
     margin: 1rem;
-    color: white;
-    text-decoration: none;
 }
 
 .footer__link:hover {

@@ -1,5 +1,3 @@
-import { ref, onMounted, onUnmounted } from 'vue';
-
 export default function () {
     const scrollY = ref(0);
 
@@ -9,7 +7,6 @@ export default function () {
 
     onMounted(() => {
         window.addEventListener('scroll', updateScroll);
-        updateScroll();
     });
 
     onUnmounted(() => {
