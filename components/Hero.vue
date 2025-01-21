@@ -115,46 +115,48 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   }
 }
 
-.hero__cover--animated {
-  opacity: 1;
-  animation: 1s ease 4s forwards fadeOut;
-}
+@media (prefers-reduced-motion: no-preference) {
+  .hero__cover--animated {
+    opacity: 1;
+    animation: 1s ease 4s forwards fadeOut;
+  }
 
-.hero__title--animated {
-  opacity: 0;
-  transform: translateY(-1rem);
-  animation: 1s ease 1s forwards fadeIn;
-}
-
-.hero__title--animated-after {
-  opacity: 0;
-  transform: translateY(-1rem);
-  animation: 1s ease 2s forwards fadeIn;
-}
-
-.hero__subtitle--animated {
-  opacity: 0;
-  transform: translateY(-1rem);
-  animation: 1s ease 3s forwards fadeIn;
-}
-
-@keyframes fadeIn {
-  from {
+  .hero__title--animated {
     opacity: 0;
     transform: translateY(-1rem);
+    animation: 1s ease 1s forwards fadeIn;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
+  .hero__title--animated-after {
     opacity: 0;
+    transform: translateY(-1rem);
+    animation: 1s ease 2s forwards fadeIn;
+  }
+
+  .hero__subtitle--animated {
+    opacity: 0;
+    transform: translateY(-1rem);
+    animation: 1s ease 3s forwards fadeIn;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }
 </style>

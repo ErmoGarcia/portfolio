@@ -1,14 +1,14 @@
 <template>
-    <section class="about" :class="{ 'about--visible': isVisible }">
+    <section id="about" class="about" :class="{ 'about--visible': isVisible }">
         <div class="about__description">
             <h1 class="about__title">About Me</h1>
             <p>
-                I’m Guillermo, a full-stack developer and software engineer skilled in <span class="about__keyword">Python</span> and <span class="about__keyword">JavaScript</span>.
+                I'm Guillermo, a full-stack developer and software engineer skilled in <span class="about__keyword">Python</span> and <span class="about__keyword">JavaScript</span>.
                 With a background as a computer science researcher, I combine creativity and technical expertise to build user-friendly, innovative solutions.
             </p>
             <p>
-                I’m passionate about <span class="about__keyword">learning new things</span> and thrive on tackling challenges and exploring fresh ideas.
-                Let’s bring your next project to life!
+                I'm passionate about <span class="about__keyword">learning new things</span> and thrive on tackling challenges and exploring fresh ideas.
+                Let's bring your next project to life!
             </p>
         </div>
         <div class="about__blob">
@@ -21,6 +21,7 @@
                 </g>
             </svg>
         </div>
+
     </section>
 </template>
 
@@ -42,34 +43,36 @@ onMounted(() => {
 
 <style scoped>
 .about {
+    padding: 2rem;
+    background-color: #f9f9f9;
+
     position: relative;
     overflow: hidden;
 
-    margin-top: 1rem;
-    height: 100vh;
+    margin-top: 2rem;
+    min-height: 100vh;
     text-align: center;
     
     display: grid;
     gap: 1rem;
     place-content: center;
-
-    background: white;
-}
-
-.about__title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-
-    z-index: 1;
 }
 
 .about__description {
     padding: 1rem;
     max-width: 70ch;
     font-size: 1.5rem;
+
     color: white;
-    mix-blend-mode: exclusion;
-    z-index: 1;
+    mix-blend-mode: difference;
+    will-change: mix-blend-mode;
+
+    z-index: 2;
+}
+
+.about__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .about__description p {
@@ -77,8 +80,11 @@ onMounted(() => {
 }
 
 .about__keyword {
+    position: relative;
+
     font-weight: bold;
-    color: #90ee02;
+    color: #880061;
+    background-color: transparent;
 }
 
 .about__blob {
@@ -90,6 +96,8 @@ onMounted(() => {
 
     display: grid;
     place-content: center;
+
+    z-index: 1;
 }
 
 .about__blob svg {
@@ -98,16 +106,15 @@ onMounted(() => {
     min-width: 800px;
 }
 
-.about--visible {
-    animation: 3s ease 0.5s both fadeIn;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+@media (prefers-reduced-motion: no-preference) {
+    .about--visible {
+        animation: 3s ease 0.5s both fadeIn;
     }
-    to {
-        opacity: 1;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
     }
 }
 </style>

@@ -20,10 +20,10 @@
 
 <script setup lang="ts">
 const navigation = ref([
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'About', path: '#about' },
+    { name: 'Projects', path: '#projects' },
+    { name: 'Skills', path: '#skills' },
+    { name: 'Contact', path: '#contact' }
 ])
 </script>
 
@@ -127,17 +127,19 @@ const navigation = ref([
     }
 }
 
-.navbar--animated {
-    transform: translateY(-100%);
-    animation: 1s ease 4s forwards slideIn;
-}
-
-@keyframes slideIn {
-    from {
+@media (prefers-reduced-motion: no-preference) {
+    .navbar--animated {
         transform: translateY(-100%);
+        animation: 1s ease 4s forwards slideIn;
     }
-    to {
-        transform: translateY(0);
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0);
+        }
     }
 }
 </style>

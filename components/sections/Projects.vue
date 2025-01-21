@@ -1,74 +1,198 @@
 <template>
-    <section class="flex flex-wrap gap-20">
-        <div class="project-card" v-for="project in projects" :key="project.id">
-            <div class="project-image" :style="{ backgroundImage: `url(${project.image})` }"></div>
-            <div class="project-content">
-                <h3>{{ project.title }}</h3>
-                <p>{{ project.description }}</p>
-            </div>
-        </div>
+    <section id="projects" class="projects">
+        <h1>Projects</h1>
+        <ul>
+            <li 
+                v-for="project in projects"
+                :key="project.id"
+                :class="{ 'projects__card--animated': isVisible }"
+            >
+                <div class="projects__card">
+                    <div class="projects__image">
+                        <NuxtImg
+                            :src="project.image"
+                            :alt="`${project.title} image`"
+                            width="300"
+                            height="200"
+                            fit="cover"
+                        />
+                    </div>
+                    <div class="projects__content">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <NuxtLink :href="project.link" target="_blank">
+                            <button>View Project</button>
+                        </NuxtLink>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </section>
 </template>
 
-<script>
-export default {
-    name: 'Projects',
-    data() {
-        return {
-            projects: [
-                {
-                    id: 1,
-                    title: 'Project One',
-                    image: 'path/to/image1.jpg',
-                    description: 'This is a description for project one.'
-                },
-                {
-                    id: 2,
-                    title: 'Project Two',
-                    image: 'path/to/image2.jpg',
-                    description: 'This is a description for project two.'
-                },
-                // Add more projects as needed
-            ]
-        };
+<script setup lang="ts">
+const { isVisible } = useElementVisibility('.projects');
+const imgPath = '/img/projects/';
+const projects = [
+    {
+        id: 1,
+        title: 'Chatstats',
+        image: `${imgPath}/chatstats.png`,
+        description: 'This is a description for project one.',
+        link: 'https://chatstats.devve.space'
+    },
+    {
+        id: 2,
+        title: 'Mus Online',
+        image: `${imgPath}/mus.png`,
+        description: 'This is a description for project two.',
+        link: 'https://github.com/ErmoGarcia/isa681project'
+    },
+    {
+        id: 3,
+        title: 'Euri Sudaderas',
+        image: `${imgPath}/euri.png`,
+        description: 'This is a description for project three.',
+        link: 'https://github.com/Eurielec/euri_sudaderas'
     }
-};
+]
 </script>
 
 <style scoped>
-.project-card {
-    width: calc(33.333% - 20px);
+.projects {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.projects ul {
+    margin-top: 20px;
+    padding: 20px;
+    display: grid;
+    gap: 4rem;
+    place-items: center;
+}
+
+.projects h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.projects__card {
+    min-width: 300px;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+
+    display: grid;
+    align-items: center;
 }
 
-.project-card:hover {
+.projects li:nth-child(even) .projects__card {
+    transform: translateX(-2rem);
+}
+
+.projects li:nth-child(odd) .projects__card {
+    transform: translateX(2rem);
+}
+
+.projects__card:hover {
     transform: translateY(-10px);
 }
 
-.project-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
+.projects__image {
+    overflow: hidden;
+}
+
+.projects__image img {
     transition: transform 0.3s;
 }
 
-.project-card:hover .project-image {
+.projects__card:hover .projects__image img {
     transform: scale(1.1);
 }
 
-.project-content {
-    padding: 20px;
+.projects__content {
+    padding: 1rem;
+    display: grid;
+    gap: 1.5rem;
 }
 
-.project-content h3 {
-    margin: 0 0 10px;
+.projects__content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.project-content p {
+.projects__content p {
     margin: 0;
+}
+
+.projects__content button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    width: 50%;
+}
+
+@media screen and (min-width: 768px) {
+    .projects__card {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .projects__card--animated {
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: 1s ease forwards slideInLeft;
+    }
+
+    .projects__card--animated:nth-child(even) {
+        transform: translateX(100%);
+        animation: 1s ease forwards slideInRight;
+    }
+
+    .projects__card--animated:nth-child(1) {
+        animation-delay: 0.5s;
+    }
+
+    .projects__card--animated:nth-child(2) {
+        animation-delay: 1s;
+    }
+
+    .projects__card--animated:nth-child(3) {
+        animation-delay: 1.5s;
+    }
+
+    .projects__card--animated:nth-child(4) {
+        animation-delay: 2s;
+    }
+
+    .projects__card--animated:nth-child(5) {
+        animation-delay: 2.5s;
+    }
+
+    .projects__card--animated:nth-child(6) {
+        animation-delay: 3s;
+    }
+
+    @keyframes slideInLeft {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
 }
 </style>
