@@ -63,6 +63,7 @@ const projects = [
     padding: 2rem;
     background-color: #f9f9f9;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .projects ul {

@@ -1,22 +1,24 @@
 <template>
-    <div class="contact-form">
-        <h2>Contact Me</h2>
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" v-model="form.name" required />
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" v-model="form.email" required />
-            </div>
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" v-model="form.message" required></textarea>
-            </div>
-            <button type="submit">Send</button>
-        </form>
-    </div>
+    <section id="contact" class="contact">
+        <div class="contact__form">
+            <h1>Contact Me</h1>
+            <form @submit.prevent="submitForm">
+                <div class="contact__form__group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" v-model="form.name" required />
+                </div>
+                <div class="contact__form__group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" v-model="form.email" required />
+                </div>
+                <div class="contact__form__group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" v-model="form.message" required></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -44,40 +46,65 @@ export default {
 </script>
 
 <style scoped>
-.contact-form {
+.contact {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+
+    display: grid;
+    place-items: center;
+}
+
+.contact__form {
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: white;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.contact__form h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-label {
+.contact__form form {
+    display: grid;
+    gap: 1rem;
+}
+
+.contact__form__group {
+    margin-bottom: 1rem;
+}
+
+.contact__form__group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
 }
 
-input,
-textarea {
+.contact__form__group input, textarea {
     width: 100%;
-    padding: 8px;
+    padding: 0.5rem;
     box-sizing: border-box;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007BFF;
+.contact__form__group textarea {
+    height: 6rem;
+}
+
+.contact__form button {
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
+.contact__form button:hover {
     background-color: #0056b3;
 }
 </style>

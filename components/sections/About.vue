@@ -63,10 +63,8 @@ onMounted(() => {
     max-width: 70ch;
     font-size: 1.5rem;
 
-    color: white;
-    mix-blend-mode: difference;
-    will-change: mix-blend-mode;
-
+    background-color: white;
+    mix-blend-mode: multiply;
     z-index: 2;
 }
 
@@ -81,10 +79,9 @@ onMounted(() => {
 
 .about__keyword {
     position: relative;
-
     font-weight: bold;
-    color: #880061;
-    background-color: transparent;
+    color: aqua;
+    mix-blend-mode: difference;
 }
 
 .about__blob {
