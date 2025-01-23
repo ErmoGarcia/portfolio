@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 const { isVisible } = useElementVisibility('.projects');
-const imgPath = '/img/projects/';
+const imgPath = '/img/projects';
 const projects = [
     {
         id: 1,
@@ -61,7 +61,6 @@ const projects = [
 <style scoped>
 .projects {
     padding: 2rem;
-    background-color: var(--bg-color);
     min-height: 100vh;
     overflow: hidden;
 }
@@ -91,14 +90,6 @@ const projects = [
     align-items: center;
 }
 
-.projects li:nth-child(even) .projects__card {
-    transform: translateX(-2rem);
-}
-
-.projects li:nth-child(odd) .projects__card {
-    transform: translateX(2rem);
-}
-
 .projects__card:hover {
     transform: translateY(-10px);
 }
@@ -108,6 +99,7 @@ const projects = [
 }
 
 .projects__image img {
+    width: 100%;
     transition: transform 0.3s;
 }
 
@@ -147,6 +139,14 @@ const projects = [
 @media screen and (min-width: 768px) {
     .projects__card {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .projects li:nth-child(even) .projects__card {
+        transform: translateX(-2rem);
+    }
+
+    .projects li:nth-child(odd) .projects__card {
+        transform: translateX(2rem);
     }
 }
 

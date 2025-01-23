@@ -7,10 +7,13 @@
                 class="skills__card"
                 :class="{ 'skills__card--animated': isVisible }"
                 :style="{ animationDelay: animationDelays[index] || '0s' }"
+                tabindex="0"
             >
                 <div class="skills__card__inner">
-                    <div class="skills__card__back" :style="{ backgroundColor: skill.color }">
-                        <h2>{{ skill.name }}</h2>
+                    <div class="skills__card__back">
+                        <div class="skills__card__back--tag" :style="{ backgroundColor: skill.color }">
+                            <h2>{{ skill.name }}</h2>
+                        </div>
                     </div>
                     <div class="skills__card__front">
                         <svg role="img" viewBox="0 0 24 24" height="50" width="100" xmlns="http://www.w3.org/2000/svg">
@@ -109,11 +112,8 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playwrite+IN:wght@100..400&family=Press+Start+2P&display=swap');
-
 .skills {
     padding: 2rem;
-    background-color: #f9f9f9;
     min-height: 100vh;
 }
 
@@ -127,7 +127,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     margin: auto;
     max-width: 1300px;
     display: grid;
-    gap: 5em;
+    gap: 5rem;
     place-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
@@ -150,7 +150,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     transform-style: preserve-3d;
 }
 
-.skills__card:hover .skills__card__inner {
+.skills__card:hover .skills__card__inner, .skills__card:focus .skills__card__inner {
     transform: rotateY(180deg);
 }
 
@@ -162,20 +162,18 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     backface-visibility: hidden;
 }
 
-.skills__card__front {
-    display: grid;
-    place-items: center;
-}
-
 .skills__card__back {
-    isolation: isolate;
     display: grid;
     place-items: center;
-    border-radius: 16px;
     transform: rotateY(180deg);
 }
 
-.skills__card__back h2 {
+.skills__card__back--tag {
+    padding: 1rem;
+    border-radius: 25px;
+}
+
+.skills__card__back--tag h2 {
     font-size: 1.2rem;
     background: inherit;
     background-clip: text;

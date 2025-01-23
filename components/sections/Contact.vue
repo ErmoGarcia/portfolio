@@ -3,7 +3,7 @@
         <div v-if="success" class="contact__success">
             <h1>Thank you for contacting me!</h1>
             <p>I will get back to you as soon as possible.</p>
-            <svg fill="#2ecc71" height="100" width="100" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
+            <svg height="100" width="100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
                 <g>
                     <path d="M474.045,173.813c-4.201,1.371-6.494,5.888-5.123,10.088c7.571,23.199,11.411,47.457,11.411,72.1
                         c0,62.014-24.149,120.315-68,164.166s-102.153,68-164.167,68s-120.316-24.149-164.167-68S16,318.014,16,256
@@ -84,13 +84,13 @@ const submitForm = async () => {
 .contact {
     padding: 20px;
     min-height: 100vh;
-    background-color: #f9f9f9;
-
+    
     display: grid;
     place-items: center;
 }
 
 .contact__success {
+    position: relative;
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
@@ -109,8 +109,12 @@ const submitForm = async () => {
     text-align: center;
 }
 
+.contact__success svg {
+    fill: var(--success-color)
+}
 
 .contact__form {
+    position: relative;
     width: 80%;
     max-width: 600px;
     margin: 0 auto;
@@ -118,6 +122,16 @@ const submitForm = async () => {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
+}
+
+.contact__form::before, .contact__success::before {
+    content: '';
+    position: absolute;
+    background-color: var(--primary-color-light);
+    inset: 0;
+    translate: -1.25rem -1.25rem;
+    border-radius: inherit;
+    z-index: -1;
 }
 
 .contact__form h1 {
@@ -132,17 +146,17 @@ const submitForm = async () => {
 }
 
 .contact__form__group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .contact__form__group label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .contact__form__group input, textarea {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.8rem;
     font-size: 0.8rem;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -173,7 +187,7 @@ const submitForm = async () => {
 .contact__form button {
     padding: 1rem 2rem;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-color-light);
     border: none;
     border-radius: 5px;
     cursor: pointer;

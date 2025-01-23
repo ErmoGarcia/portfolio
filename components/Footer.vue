@@ -20,7 +20,7 @@
 const links = [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/guillegg/' },
     { name: 'GitHub', url: 'https://github.com/ErmoGarcia' },
-    { name: 'Twitter', url: 'https://twitter.com/your-profile' }
+    { name: 'Twitter', url: 'https://twitter.com/g_garcia_grao' }
 ]
 </script>
 

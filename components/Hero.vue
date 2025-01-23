@@ -33,8 +33,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Playwrite+IN:wght@100..400&display=swap'); /* TODO: Add your own font link */
-
 .hero {
   height: 100vh;
   position: relative;
@@ -75,7 +73,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 .hero__heading {
   padding: 1rem;
   max-width: 700ch;
-  font-family: Cincel, sans-serif;
 }
 
 .hero__title {
@@ -90,7 +87,8 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 }
 
 .hero__keyword {
-  font-family: 'Lobster', cursive;
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
   font-size: 2rem;
   color: var(--primary-color-light);
   white-space: nowrap;
