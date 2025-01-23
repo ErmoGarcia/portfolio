@@ -184,7 +184,8 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 
 @media (prefers-reduced-motion: no-preference) {
     .skills__card--animated {
-        opacity: 0;
+        will-change: opacity, transform;
+        opacity: 0.01;
         transform: translateY(100%);
         animation: 2s ease-out 1s forwards slideUp;
     }
@@ -192,7 +193,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     @keyframes slideUp {
         from {
             transform: translateY(100%);
-            opacity: 0;
+            opacity: 0.01;
         }
 
         to {

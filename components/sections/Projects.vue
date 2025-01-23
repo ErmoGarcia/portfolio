@@ -152,7 +152,8 @@ const projects = [
 
 @media (prefers-reduced-motion: no-preference) {
     .projects__card--animated {
-        opacity: 0;
+        will-change: opacity, transform;
+        opacity: 0.01;
         transform: translateX(-100%);
         animation: 1s ease forwards slideInLeft;
     }

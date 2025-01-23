@@ -115,31 +115,35 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 
 @media (prefers-reduced-motion: no-preference) {
   .hero__cover--animated {
+    will-change: opacity, transform;
     opacity: 1;
     animation: 1s ease 4s forwards fadeOut;
   }
 
   .hero__title--animated {
-    opacity: 0;
+    will-change: opacity, transform;
+    opacity: 0.01;
     transform: translateY(-1rem);
     animation: 1s ease 1s forwards fadeIn;
   }
 
   .hero__title--animated-after {
-    opacity: 0;
+    will-change: opacity, transform;
+    opacity: 0.01;
     transform: translateY(-1rem);
     animation: 1s ease 2s forwards fadeIn;
   }
 
   .hero__subtitle--animated {
-    opacity: 0;
+    will-change: opacity, transform;
+    opacity: 0.01;
     transform: translateY(-1rem);
     animation: 1s ease 3s forwards fadeIn;
   }
 
   @keyframes fadeIn {
     from {
-      opacity: 0;
+      opacity: 0.01;
       transform: translateY(-1rem);
     }
     to {
@@ -153,7 +157,7 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
       opacity: 1;
     }
     to {
-      opacity: 0;
+      opacity: 0.01;
     }
   }
 }

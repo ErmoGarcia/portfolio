@@ -129,6 +129,7 @@ const navigation = ref([
 
 @media (prefers-reduced-motion: no-preference) {
     .navbar--animated {
+        will-change: transform;
         transform: translateY(-100%);
         animation: 1s ease 4s forwards slideIn;
     }

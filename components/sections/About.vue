@@ -105,12 +105,13 @@ onMounted(() => {
 
 @media (prefers-reduced-motion: no-preference) {
     .about--visible {
+        will-change: opacity;
         animation: 3s ease 0.5s both fadeIn;
     }
 
     @keyframes fadeIn {
         from {
-            opacity: 0;
+            opacity: 0.01;
         }
     }
 }
