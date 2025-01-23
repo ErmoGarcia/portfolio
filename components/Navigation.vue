@@ -34,7 +34,7 @@ const navigation = ref([
     top: 0;
     left: 0;
     right: 0;
-    color: white;
+    color: var(--text-color-light);
 }
 
 .navbar__wrapper {
@@ -50,7 +50,7 @@ const navigation = ref([
     align-items: center;
 
     border: none;
-    color: white;
+    color: var(--text-color-light);
     background-color: transparent;
 }
 
@@ -90,14 +90,14 @@ const navigation = ref([
 
 .navbar__menu ul li a {
     padding: 0.5rem;
-    color: white;
+    color: var(--text-color-light);
     text-decoration: none;
     transition: color 1s ease-in-out;
 }
 
 .navbar__menu ul li a:hover {
-    color: black;
-    background-color: white;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 @media screen and (min-width: 768px) {

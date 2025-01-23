@@ -1,4 +1,14 @@
 :root {
-  --primary-color: #b794f6;
+  --primary-color: #3F51B5;
+  --primary-color-light: #9FA8DA;
+  --primary-color-dark: #303F9F;
+  --secondary-color: #b5a33f;
+  --success-color: #2ecc71;
+  --danger-color: #b00020;
+  --warning-color: #f39c12;
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --text-color-light: #fff;
+
   font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

@@ -92,7 +92,7 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 .hero__keyword {
   font-family: 'Lobster', cursive;
   font-size: 2rem;
-  color: var(--primary-color);
+  color: var(--primary-color-light);
   white-space: nowrap;
 }
 

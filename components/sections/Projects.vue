@@ -61,7 +61,7 @@ const projects = [
 <style scoped>
 .projects {
     padding: 2rem;
-    background-color: #f9f9f9;
+    background-color: var(--bg-color);
     min-height: 100vh;
     overflow: hidden;
 }
@@ -135,9 +135,13 @@ const projects = [
     border: none;
     border-radius: 4px;
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-color-light);
     cursor: pointer;
     width: 50%;
+}
+
+.projects__content button:hover {
+    background-color: var(--primary-color-dark);
 }
 
 @media screen and (min-width: 768px) {
