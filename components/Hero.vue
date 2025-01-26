@@ -10,15 +10,17 @@
               preload
               loading="eager"
               @load="() => loading = false"
-              :style="{ transform: `scale(${scale})` }"
+              :style="{ transform: `scale(${1.1 + scrollY / sensitivity})` }"
             ></NuxtImg>
           </div>
           <div class="hero__cover" :class="{ 'hero__cover--animated': !loading }"></div>
-          <div :style="{ transform: `translate(0, ${scrollY}px)` }">
-              <hgroup class="hero__heading">
-                  <h1 class="hero__title"><span class="hero__title--animated">Hi,</span><span class="hero__title--animated-after"> I'm Guillermo!</span></h1>
-                  <p class="hero__subtitle hero__subtitle--animated">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span></p>
-              </hgroup>
+          <div class="hero__content">
+              <div>
+                <hgroup class="hero__heading">
+                    <h1 class="hero__title"><span class="hero__title--animated">Hi,</span><span class="hero__title--animated-after"> I'm Guillermo!</span></h1>
+                    <p class="hero__subtitle hero__subtitle--animated">A passionate <span class="hero__keyword">Full-Stack Developer</span> and <span class="hero__keyword">Software Engineer</span></p>
+                </hgroup>
+              </div>
           </div>
         </div>
     </header>
@@ -28,13 +30,12 @@
 const loading = ref(true);
 
 const { scrollY } = useScroll();
-const sensitivity = 500;
-const scale = computed(() => 1 + scrollY.value / sensitivity);
+const sensitivity = 1000;
 </script>
 
 <style scoped>
 .hero {
-  height: 100vh;
+  height: 100svh;
   position: relative;
   overflow: hidden;
   color: white;
@@ -57,6 +58,9 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   width: 100vw;
   object-fit: cover;
   object-position: 75% 25%;
+  
+  will-change: transform;
+  transition: transform 10ms linear;
 }
 
 .hero__banner::after {
@@ -70,9 +74,25 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   background: linear-gradient(180deg, rgba(0,0,0,0.8) 15%, rgba(0,0,0,0.6) 30%);
 }
 
+.hero__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clip-path: inset(0);
+}
+
+.hero__content div {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
 .hero__heading {
   padding: 1rem;
-  max-width: 700ch;
+  max-width: 70ch;
 }
 
 .hero__title {
@@ -82,14 +102,14 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 }
 
 .hero__subtitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 300;
 }
 
 .hero__keyword {
   font-family: Oswald, sans-serif;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--primary-color-light);
   white-space: nowrap;
 }
@@ -105,6 +125,8 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
   display: grid;
   place-items: center;
   text-align: center;
+  
+  will-change: opacity, transform;
 }
 
 @media screen and (min-width: 768px) {
@@ -115,7 +137,6 @@ const scale = computed(() => 1 + scrollY.value / sensitivity);
 
 @media (prefers-reduced-motion: no-preference) {
   .hero__cover--animated {
-    will-change: opacity, transform;
     opacity: 1;
     animation: 1s ease 4s forwards fadeOut;
   }

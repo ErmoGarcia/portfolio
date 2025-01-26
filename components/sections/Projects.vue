@@ -61,7 +61,7 @@ const projects = [
 <style scoped>
 .projects {
     padding: 2rem;
-    min-height: 100vh;
+    min-height: 100svh;
     overflow: hidden;
 }
 
@@ -71,6 +71,10 @@ const projects = [
     display: grid;
     gap: 4rem;
     place-items: center;
+}
+
+.projects ul li {
+    will-change: opacity, transform;
 }
 
 .projects h1 {
@@ -152,7 +156,6 @@ const projects = [
 
 @media (prefers-reduced-motion: no-preference) {
     .projects__card--animated {
-        will-change: opacity, transform;
         opacity: 0.01;
         transform: translateX(-100%);
         animation: 1s ease forwards slideInLeft;

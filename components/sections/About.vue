@@ -49,7 +49,7 @@ onMounted(() => {
     overflow: hidden;
 
     margin-top: 2rem;
-    min-height: 100vh;
+    min-height: 100svh;
     text-align: center;
     
     display: grid;
@@ -62,8 +62,6 @@ onMounted(() => {
     max-width: 70ch;
     font-size: 1.5rem;
 
-    background-color: var(--text-color-light);
-    mix-blend-mode: multiply;
     z-index: 2;
 }
 
@@ -79,8 +77,7 @@ onMounted(() => {
 .about__keyword {
     position: relative;
     font-weight: bold;
-    color: var(--secondary-color);
-    mix-blend-mode: difference;
+    color: var(--primary-color-dark);
 }
 
 .about__blob {
@@ -92,8 +89,6 @@ onMounted(() => {
 
     display: grid;
     place-content: center;
-
-    z-index: 1;
 }
 
 .about__blob svg {

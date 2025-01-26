@@ -3,6 +3,7 @@ export default function () {
 
     function updateScroll() {
         scrollY.value = window.scrollY;
+        console.log('scrollY', scrollY.value);
     }
 
     onMounted(() => {

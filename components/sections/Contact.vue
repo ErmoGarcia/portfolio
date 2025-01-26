@@ -83,7 +83,7 @@ const submitForm = async () => {
 <style scoped>
 .contact {
     padding: 20px;
-    min-height: 100vh;
+    min-height: 100svh;
     
     display: grid;
     place-items: center;
@@ -122,16 +122,6 @@ const submitForm = async () => {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
-}
-
-.contact__form::before, .contact__success::before {
-    content: '';
-    position: absolute;
-    background-color: var(--primary-color-light);
-    inset: 0;
-    translate: -1.25rem -1.25rem;
-    border-radius: inherit;
-    z-index: -1;
 }
 
 .contact__form h1 {
@@ -195,5 +185,17 @@ const submitForm = async () => {
 
 .contact__form button:hover {
     background-color: var(--primary-color-dark);
+}
+
+@media screen and (min-width: 768px) {
+    .contact__form::before, .contact__success::before {
+        content: '';
+        position: absolute;
+        background-color: var(--primary-color-light);
+        inset: 0;
+        translate: -1.25rem -1.25rem;
+        border-radius: inherit;
+        z-index: -1;
+    }
 }
 </style>

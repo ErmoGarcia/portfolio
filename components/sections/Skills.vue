@@ -114,7 +114,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 <style scoped>
 .skills {
     padding: 2rem;
-    min-height: 100vh;
+    min-height: 100svh;
 }
 
 .skills h1 {
@@ -139,6 +139,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     perspective: 1000px;
     width: 50%;
     height: 3rem;
+    will-change: opacity, transform;
 }
 
 .skills__card__inner {
@@ -184,7 +185,6 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 
 @media (prefers-reduced-motion: no-preference) {
     .skills__card--animated {
-        will-change: opacity, transform;
         opacity: 0.01;
         transform: translateY(100%);
         animation: 2s ease-out 1s forwards slideUp;
