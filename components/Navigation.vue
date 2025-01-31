@@ -9,11 +9,30 @@
             </button>
             <div class="navbar__menu">
                 <ul>
-                    <li v-for="nav in navigation" class="text-center text-xl md:text-base my-4 md:mt-0 transition-colors p-1 hover:bg-white hover:text-black">
+                    <li v-for="nav in navigation" :key="nav.name">
                         <nuxt-link :to="nav.path">{{ nav.name }}</nuxt-link>
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="navbar__links">
+            <ul>
+                <li>
+                    <nuxt-link href="https://www.linkedin.com/in/guillegg/" target="_blank" rel="noopener noreferrer">
+                        <img src="~/assets/icons/linkedin.svg" alt="Linkedin" />
+                    </nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link href="https://github.com/ErmoGarcia" target="_blank" rel="noopener noreferrer">
+                        <img src="~/assets/icons/github.svg" alt="GitHub" />
+                    </nuxt-link>
+                </li>
+                <li>
+                    <nuxt-link href="https://twitter.com/g_garcia_grao" target="_blank" rel="noopener noreferrer">
+                        <img src="~/assets/icons/x.svg" alt="X" />
+                    </nuxt-link>
+                </li>
+            </ul>
         </div>
     </nav>
 </template>
@@ -25,19 +44,40 @@ const navigation = ref([
     { name: 'Skills', path: '#skills' },
     { name: 'Contact', path: '#contact' }
 ])
+const links = ref([
+    {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/guillegg/',
+
+    },
+    {
+        name: 'GitHub',
+        url: 'https://github.com/ErmoGarcia',
+    },
+    {
+        name: 'X',
+        url: 'https://twitter.com/g_garcia_grao',
+    }
+])
 </script>
 
 <style scoped>
 .navbar {
+    max-width: var(--content-width);
+    margin: auto;
+
     z-index: 10;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    color: var(--text-color-light);
+
+    display: flex;
+    justify-content: space-around;
 }
 
 .navbar__wrapper {
+    flex-grow: 1;
     padding: 1rem;
     margin: auto;
     max-width: 1300px;
@@ -50,7 +90,7 @@ const navigation = ref([
     align-items: center;
 
     border: none;
-    color: var(--text-color-light);
+    color: var(--clr-text);
     background-color: transparent;
 }
 
@@ -90,14 +130,32 @@ const navigation = ref([
 
 .navbar__menu ul li a {
     padding: 0.5rem;
-    color: var(--text-color-light);
+    color: var(--clr-text);
     text-decoration: none;
     transition: color 1s ease-in-out;
 }
 
 .navbar__menu ul li a:hover {
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--clr-text-dark);
+    background-color: var(--clr-primary);
+}
+
+.navbar__links {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+.navbar__links ul {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem;
+}
+
+.navbar__links ul img {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: var(--clr-primary);
 }
 
 @media screen and (min-width: 768px) {
