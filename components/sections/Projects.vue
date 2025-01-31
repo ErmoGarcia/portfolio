@@ -5,25 +5,24 @@
             <li 
                 v-for="project in projects"
                 :key="project.id"
+                class="projects__card"
                 :class="{ 'projects__card--animated': isVisible }"
             >
-                <div class="projects__card">
-                    <div class="projects__image">
-                        <NuxtImg
-                            :src="project.image"
-                            :alt="`${project.title} image`"
-                            width="300"
-                            height="200"
-                            fit="cover"
-                        />
-                    </div>
-                    <div class="projects__content">
-                        <h3>{{ project.title }}</h3>
-                        <p>{{ project.description }}</p>
-                        <NuxtLink :href="project.link" target="_blank">
-                            <button>View Project</button>
-                        </NuxtLink>
-                    </div>
+                <div class="projects__image">
+                    <NuxtImg
+                        :src="project.image"
+                        :alt="`${project.title} image`"
+                        width="300"
+                        height="200"
+                        fit="cover"
+                    />
+                </div>
+                <div class="projects__content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <NuxtLink :href="project.link" target="_blank">
+                        <button>View Project</button>
+                    </NuxtLink>
                 </div>
             </li>
         </ul>
@@ -60,31 +59,28 @@ const projects = [
 
 <style scoped>
 .projects {
-    padding: 2rem;
     min-height: 100svh;
-    overflow: hidden;
-}
-
-.projects ul {
-    margin-top: 20px;
-    padding: 20px;
-    display: grid;
-    gap: 4rem;
-    place-items: center;
-}
-
-.projects ul li {
-    will-change: opacity, transform;
+    padding: 2rem;
+    margin-block: 3rem;
 }
 
 .projects h1 {
     font-size: 2rem;
-    text-align: center;
+    text-transform: uppercase;
+}
+
+.projects ul {
+    margin-top: 2rem;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    place-items: center;
 }
 
 .projects__card {
     min-width: 300px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--clr-primary);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -130,27 +126,19 @@ const projects = [
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 4px;
-    background-color: var(--primary-color);
+    background-color: var(--clr-primary);
     color: var(--text-color-light);
     cursor: pointer;
     width: 50%;
 }
 
 .projects__content button:hover {
-    background-color: var(--primary-color-dark);
+    background-color: var(--clr-primary-dark);
 }
 
 @media screen and (min-width: 768px) {
-    .projects__card {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .projects li:nth-child(even) .projects__card {
-        transform: translateX(-2rem);
-    }
-
-    .projects li:nth-child(odd) .projects__card {
-        transform: translateX(2rem);
+    .projects ul {
+        place-items: start;
     }
 }
 

@@ -1,5 +1,7 @@
 <template>
     <section id="contact" class="contact">
+        <h1 class="contact__title">Contact</h1>
+
         <div v-if="success" class="contact__success">
             <h1>Thank you for contacting me!</h1>
             <p>I will get back to you as soon as possible.</p>
@@ -82,6 +84,7 @@ const submitForm = async () => {
 
 <style scoped>
 .contact {
+    position: relative;
     padding: 20px;
     min-height: 100svh;
     
@@ -89,14 +92,28 @@ const submitForm = async () => {
     place-items: center;
 }
 
+.contact__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    margin-top: 2rem;
+    font-size: 20vw;
+    font-weight: 100;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--clr-primary);
+}
+
 .contact__success {
     position: relative;
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--clr-primary);
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--clr-bg);
 
     display: grid;
     gap: 2rem;
@@ -110,7 +127,7 @@ const submitForm = async () => {
 }
 
 .contact__success svg {
-    fill: var(--success-color)
+    fill: var(--clr-success)
 }
 
 .contact__form {
@@ -119,15 +136,17 @@ const submitForm = async () => {
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--clr-primary);
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--clr-bg);
 }
 
 .contact__form h1 {
+    visibility: hidden;
     font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
+    text-transform: uppercase;
 }
 
 .contact__form form {
@@ -149,8 +168,10 @@ const submitForm = async () => {
     padding: 0.8rem;
     font-size: 0.8rem;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid var(--clr-primary);
     border-radius: 5px;
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
 }
 
 .contact__form__group textarea {
@@ -159,39 +180,40 @@ const submitForm = async () => {
 
 .contact__form__group input:focus, .contact__form__group textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--clr-primary);
 }
 
 .contact__form__group input:not(:placeholder-shown):valid, .contact__form__group textarea:not(:placeholder-shown):valid {
-    border-color: var(--success-color);
+    border-color: var(--clr-success);
 }
 
 .contact__form__group input:not(:placeholder-shown):invalid, .contact__form__group textarea:not(:placeholder-shown):invalid {
-    border-color: var(--danger-color);
+    border-color: var(--clr-danger);
 }
 
 .contact__form__group input:focus:invalid, .contact__form__group textarea:focus:invalid {
-    border-color: var(--warning-color);
+    border-color: var(--clr-warning);
 }
 
 .contact__form button {
     padding: 1rem 2rem;
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+    width: 50%;
+    background-color: var(--clr-primary);
+    color: var(--clr-text);
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .contact__form button:hover {
-    background-color: var(--primary-color-dark);
+    background-color: var(--clr-primary-dark);
 }
 
 @media screen and (min-width: 768px) {
     .contact__form::before, .contact__success::before {
         content: '';
         position: absolute;
-        background-color: var(--primary-color-light);
+        background-color: var(--clr-primary-light);
         inset: 0;
         translate: -1.25rem -1.25rem;
         border-radius: inherit;
