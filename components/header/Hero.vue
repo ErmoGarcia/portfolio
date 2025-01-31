@@ -49,7 +49,7 @@ const sensitivity = 1000;
 }
 
 .hero__keyword {
-  font-family: "Space Mono", monospace;
+  font-family: var(--ff-secondary);
   font-weight: 700;
   font-size: 1.8rem;
   color: var(--clr-primary);
