@@ -8,17 +8,14 @@
                 class="projects__card"
                 :class="{ 'projects__card--animated': isVisible }"
             >
-                <div class="projects__image">
-                    <NuxtImg
-                        :src="project.image"
-                        :alt="`${project.title} image`"
-                        width="300"
-                        height="200"
-                        fit="cover"
-                    />
-                </div>
+                <NuxtImg
+                    class="projects__image"
+                    :src="project.image"
+                    :alt="`${project.title} image`"
+                    fit="contain"
+                />
                 <div class="projects__content">
-                    <h3>{{ project.title }}</h3>
+                    <h2>{{ project.title }}</h2>
                     <p>{{ project.description }}</p>
                     <NuxtLink :href="project.link" target="_blank">
                         <button>View Project</button>
@@ -36,22 +33,22 @@ const projects = [
     {
         id: 1,
         title: 'Chatstats',
-        image: `${imgPath}/chatstats.png`,
-        description: 'This is a description for project one.',
+        image: `${imgPath}/stats.jpg`,
+        description: 'A tool to visualize chat statistics and relevant data from your Whatsapp and Telegram chats.',
         link: 'https://chatstats.devve.space'
     },
     {
         id: 2,
         title: 'Mus Online',
-        image: `${imgPath}/mus.png`,
-        description: 'This is a description for project two.',
+        image: `${imgPath}/cards.jpg`,
+        description: 'Play the classical Spanish card game online in real time.',
         link: 'https://github.com/ErmoGarcia/isa681project'
     },
     {
         id: 3,
         title: 'Euri Sudaderas',
-        image: `${imgPath}/euri.png`,
-        description: 'This is a description for project three.',
+        image: `${imgPath}/hoodies.jpg`,
+        description: 'An online store to by merchandising for Eurielec.',
         link: 'https://github.com/Eurielec/euri_sudaderas'
     }
 ]
@@ -69,127 +66,64 @@ const projects = [
     text-transform: uppercase;
 }
 
-.projects ul {
-    margin-top: 2rem;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
-    place-items: center;
-}
-
 .projects__card {
-    min-width: 300px;
-    border: 1px solid var(--clr-primary);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-
-    display: grid;
-    align-items: center;
-}
-
-.projects__card:hover {
-    transform: translateY(-10px);
-}
-
-.projects__image {
-    overflow: hidden;
-}
-
-.projects__image img {
+    margin-top: 12rem;
     width: 100%;
-    transition: transform 0.3s;
-}
-
-.projects__card:hover .projects__image img {
-    transform: scale(1.1);
+    display: grid;
 }
 
 .projects__content {
-    padding: 1rem;
-    display: grid;
-    gap: 1.5rem;
+    place-content: center;
+    text-align: center;
 }
 
-.projects__content h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+.projects__content h2 {
+    font-size: 1.5rem;
+    padding: 2rem;
 }
 
 .projects__content p {
-    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding: 2rem;
 }
 
 .projects__content button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
+    padding: 1rem 2rem;
     background-color: var(--clr-primary);
-    color: var(--text-color-light);
+    color: var(--clr-text);
     cursor: pointer;
-    width: 50%;
+    border-radius: 5px;
 }
 
-.projects__content button:hover {
-    background-color: var(--clr-primary-dark);
+.projects__image {
+    width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-    .projects ul {
-        place-items: start;
+    .projects__card {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+    }
+
+
+    .projects__card:nth-child(odd) {
+        grid-template-areas: "content content image image image";
+    }
+
+    .projects__card:nth-child(even) {
+        grid-template-areas: "image image image content content";
+    }
+
+    .projects__image {
+        grid-area: image;
+    }
+
+    .projects__content {
+        grid-area: content;
     }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .projects__card--animated {
-        opacity: 0.01;
-        transform: translateX(-100%);
-        animation: 1s ease forwards slideInLeft;
-    }
-
-    .projects__card--animated:nth-child(even) {
-        transform: translateX(100%);
-        animation: 1s ease forwards slideInRight;
-    }
-
-    .projects__card--animated:nth-child(1) {
-        animation-delay: 0.5s;
-    }
-
-    .projects__card--animated:nth-child(2) {
-        animation-delay: 1s;
-    }
-
-    .projects__card--animated:nth-child(3) {
-        animation-delay: 1.5s;
-    }
-
-    .projects__card--animated:nth-child(4) {
-        animation-delay: 2s;
-    }
-
-    .projects__card--animated:nth-child(5) {
-        animation-delay: 2.5s;
-    }
-
-    .projects__card--animated:nth-child(6) {
-        animation-delay: 3s;
-    }
-
-    @keyframes slideInLeft {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideInRight {
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
 }
 </style>
