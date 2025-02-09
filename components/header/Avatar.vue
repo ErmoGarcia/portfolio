@@ -19,40 +19,62 @@
 <style scoped>
 .avatar {
     position: relative;
-    height: 500px;
-    width: 400px;
+    height: 300px;
+    width: 200px;
     border-radius: 50%;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.avatar:hover {
-    transform: scale(1.2);
+    transform-origin: 50% bottom;
+    will-change: transform;
 }
 
 .avatar__wrapper {
-    clip-path: path("M0 0 H400 V300 A200 200 0 0 1 0 300 Z");
     position: relative;
+    clip-path: path("M 0,0 L 200,0 L 200,200 A 50,50 0,0,1 0,200 Z");
 }
 
 .avatar__img {
     pointer-events: none;
-    width: 400px;
-    transform: translateY(100px) scale(1.15);
+    width: 200px;
     transform-origin: 50% bottom;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.avatar:hover .avatar__img {
-    transform: translateY(85px) scale(1.2);
+    transform: translateY(80px);
+    will-change: transform;
 }
 
 .avatar__decorator {
     position: absolute;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
     background-color: var(--clr-primary);
-    height: 400px;
-    width: 400px;
-    border-radius: 50%;
+    clip-path: ellipse(100px 100px at 100px 200px);
+}
+
+@media screen and (min-width: 768px) {
+    .avatar {
+        height: 500px;
+        width: 400px;
+    }
+
+    .avatar__wrapper {
+        clip-path: path("M 0,0 L 400,0 L 400,300 A 200,200 0,0,1 0,300 Z");
+    }
+
+    .avatar__img {
+        width: 400px;
+    }
+
+    .avatar__decorator {
+        clip-path: ellipse(200px 200px at 200px 300px);
+    }    
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .avatar:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+    }
+
+    .avatar:hover .avatar__img {
+        transform: translateY(80px) scale(1.2);
+        transition: transform 0.5s;
+    }
 }
 </style>

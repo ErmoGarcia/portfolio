@@ -6,6 +6,7 @@
 .separator {
     --separator-color: var(--clr-primary);
 
+    margin-top: 2rem;
     border: none;
     height: 2px;
     background: var(--separator-color);

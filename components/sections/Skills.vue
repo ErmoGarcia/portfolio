@@ -114,7 +114,6 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 <style scoped>
 .skills {
     padding: 2rem;
-    min-height: 100svh;
 }
 
 .skills h1 {

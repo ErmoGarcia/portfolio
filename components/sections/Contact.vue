@@ -86,7 +86,6 @@ const submitForm = async () => {
 .contact {
     position: relative;
     padding: 20px;
-    min-height: 100svh;
     
     display: grid;
     place-items: center;

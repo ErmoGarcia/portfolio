@@ -30,7 +30,6 @@ const { isVisible } = useElementVisibility('.about');
 
 <style scoped>
 .about {
-    min-height: 100svh;
     margin-block: 5rem;
     margin-inline: auto;
     padding: 2rem;

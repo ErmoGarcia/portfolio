@@ -59,13 +59,13 @@ const projects = [
 
 <style scoped>
 .projects {
-    min-height: 100svh;
     padding: 2rem;
     margin-block: 3rem;
 }
 
 .projects h1 {
     font-size: 2rem;
+    font-weight: bold;
     text-transform: uppercase;
 }
 
