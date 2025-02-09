@@ -25,7 +25,7 @@ body {
 }
 
 section {
-  height: max(min(100svh, 1200px), 800px);
+  min-height: min(100svh, 1200px);
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 2rem;

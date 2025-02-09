@@ -15,6 +15,7 @@
         <SectionsAbout />
         <Separator />
         <SectionsProjects />
+        <Separator />
         <SectionsSkills />
         <SectionsContact />
       </MainContent>
