@@ -1,10 +1,19 @@
 <template>
     <div class="body">
-        <Navigation />
+        <Navigation :navigation="navigation" />
         <slot />
-        <Footer />
+        <Footer :navigation="navigation" />
     </div>
 </template>
+
+<script setup lang="ts">
+const navigation = ref([
+    { name: 'About', path: '#about' },
+    { name: 'Projects', path: '#projects' },
+    { name: 'Skills', path: '#skills' },
+    { name: 'Contact', path: '#contact' }
+])
+</script>
 
 <style scoped>
 .body {

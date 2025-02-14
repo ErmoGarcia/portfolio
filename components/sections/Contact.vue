@@ -35,7 +35,7 @@
         </div>
 
         <div v-else class="contact__form">
-            <h1>Contact Me</h1>
+            <h1>Contact</h1>
             <form @submit.prevent="submitForm">
                 <div class="contact__form__group">
                     <label for="name">Name:</label>
@@ -147,6 +147,7 @@ const submitForm = async () => {
     margin-bottom: 2rem;
     text-align: center;
     text-transform: uppercase;
+    color: var(--clr-primary);
 }
 
 .contact__form form {

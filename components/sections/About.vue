@@ -41,8 +41,6 @@ const { isVisible } = useElementVisibility('.about');
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     place-content: center;
- 
-    will-change: opacity;
 }
 
 .about__title {
@@ -111,13 +109,18 @@ const { isVisible } = useElementVisibility('.about');
 }
 
 @media (prefers-reduced-motion: no-preference) {
+    .about {
+        opacity: 0.01;
+        will-change: opacity;
+    }
+
     .about--visible {
-        animation: 3s ease 0.5s both fadeIn;
+        animation: fadeIn 3s ease 0.5s forwards;
     }
 
     @keyframes fadeIn {
-        from {
-            opacity: 0.01;
+        to {
+            opacity: 1;
         }
     }
 }

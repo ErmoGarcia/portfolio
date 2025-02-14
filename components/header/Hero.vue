@@ -59,7 +59,7 @@
 <style scoped>
 header {
   overflow: hidden;
-  height: min(100svh, 1200px);
+  height: min(90svh, 1200px);
 }
 
 .hero {

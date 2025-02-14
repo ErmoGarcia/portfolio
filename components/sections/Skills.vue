@@ -139,6 +139,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 
 <style scoped>
 .skills {
+    min-height: auto;
     padding: 2rem;
     margin-block: 3rem;
 }
@@ -171,8 +172,7 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 }
 
 .skills__card {
-    height: 3.5rem;
-    min-width: 80px;
+    flex: 0 0 min-content;
     overflow: hidden;
     transition: transform 0.3s;
     perspective: 1000px;
@@ -180,22 +180,16 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
 }
 
 .skills__card__inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
 
-.skills__card:hover .skills__card__inner, .skills__card:focus .skills__card__inner {
-    transform: rotateY(180deg);
-}
-
 .skills__card__front, .skills__card__back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    grid-column-start: 1;
+    grid-row-start: 1;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
@@ -220,11 +214,15 @@ const animationDelays = useState<string[]>(() => Array.from({ length: skills.len
     filter: invert(1) grayscale(1) contrast(100);
 }
 
+.skills__card:hover .skills__card__inner, .skills__card:focus .skills__card__inner {
+    transform: rotateY(180deg);
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .skills__card--animated {
         opacity: 0.01;
         transform: translateY(100%);
-        animation: 2s ease-out 1s forwards slideUp;
+        animation: slideUp 2s ease-out 1s forwards;
     }
 
     @keyframes slideUp {

@@ -4,15 +4,16 @@
         <div class="footer__links">
             <!-- Social Media Links -->
             <ul>
-                <li v-for="link in links" :key="link.name">
+                <li v-for="link in navigation" :key="link.name">
                     <nuxt-link
-                        :href="link.url"
+                        :href="link.path"
                         target="_blank"
                         rel="noopener noreferrer">
                         {{ link.name }}
                     </nuxt-link>
                 </li>
             </ul>
+            <SocialLinks :invert="true" />
         </div>
         <p class="footer__content" style="margin-top: 10px; font-size: 14px;">
             &copy; 2025 Guillermo García Grao. All Rights Reserved.
@@ -21,11 +22,14 @@
 </template>
 
 <script setup lang="ts">
-const links = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/guillegg/' },
-    { name: 'GitHub', url: 'https://github.com/ErmoGarcia' },
-    { name: 'Twitter', url: 'https://twitter.com/g_garcia_grao' }
-]
+const props = defineProps({
+    navigation: {
+        type: Array as PropType<{ name: string, path: string }[]>,
+        required: true
+    }
+})
+
+const navigation = props.navigation
 </script>
 
 <style scoped>
@@ -33,8 +37,6 @@ const links = [
     height: 12rem;
     overflow: hidden;
     padding: 1.5rem;
-    font-size: 1.2rem;
-    text-align: center;
     background-color: var(--clr-primary);
     color: var(--clr-text);
     
