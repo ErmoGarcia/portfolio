@@ -6,5 +6,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/reset.css', '~/assets/css/base.css'],
   routeRules: {
     '/': { prerender: true },
+  },
+  typescript: {
+    typeCheck: true
   }
 })

@@ -57,11 +57,6 @@
 </template>
 
 <style scoped>
-header {
-  overflow: hidden;
-  height: min(90svh, 1200px);
-}
-
 .hero {
   max-width: var(--content-width);
   margin: 0 auto;

@@ -4,7 +4,7 @@
         <ul>
             <li 
                 v-for="project in projects"
-                :key="project.id"
+                :key="project.name"
                 class="projects__card"
                 :class="{ 'projects__card--animated': isVisible }"
             >
@@ -17,8 +17,8 @@
                 <div class="projects__content">
                     <h2>{{ project.title }}</h2>
                     <p>{{ project.description }}</p>
-                    <NuxtLink :href="project.link" target="_blank">
-                        <button>View Project</button>
+                    <NuxtLink :href="`/projects/${project.name}`">
+                        <button>View</button>
                     </NuxtLink>
                 </div>
             </li>
@@ -31,21 +31,21 @@ const { isVisible } = useElementVisibility('.projects');
 const imgPath = '/img/projects';
 const projects = [
     {
-        id: 1,
+        name: 'chatstats',
         title: 'Chatstats',
         image: `${imgPath}/stats.jpg`,
         description: 'A tool to visualize chat statistics and relevant data from your Whatsapp and Telegram chats.',
         link: 'https://chatstats.devve.space'
     },
     {
-        id: 2,
+        name: 'musOnline',
         title: 'Mus Online',
         image: `${imgPath}/cards.jpg`,
         description: 'Play the classical Spanish card game online in real time.',
         link: 'https://github.com/ErmoGarcia/isa681project'
     },
     {
-        id: 3,
+        name: 'euriSudaderas',
         title: 'Euri Sudaderas',
         image: `${imgPath}/hoodies.jpg`,
         description: 'An online store to by merchandising for Eurielec.',
@@ -94,6 +94,11 @@ const projects = [
     color: var(--clr-text);
     cursor: pointer;
     border-radius: 5px;
+    border: none;
+}
+
+.projects__content button:hover {
+    background-color: var(--clr-primary-dark);
 }
 
 .projects__image {

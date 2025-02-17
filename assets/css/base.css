@@ -28,9 +28,19 @@ body {
   font-family: var(--ff-primary);
 }
 
+header {
+  overflow: hidden;
+  height: min(90svh, 1200px);
+}
+
 section {
   min-height: min(100svh, 1200px);
   max-width: var(--content-width);
   margin: 0 auto;
   padding: 2rem;
+}
+
+*::selection {
+  background-color: var(--clr-primary);
+  color: var(--clr-text);
 }

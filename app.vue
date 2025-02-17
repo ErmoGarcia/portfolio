@@ -9,16 +9,7 @@
       <Link rel="manifest" href="/site.webmanifest" />
     </Head>
     <NuxtLayout>
-      <HeaderHero />
-      <Separator />
-      <MainContent>
-        <SectionsAbout />
-        <Separator />
-        <SectionsProjects />
-        <Separator />
-        <SectionsSkills />
-        <SectionsContact />
-      </MainContent>
+      <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
