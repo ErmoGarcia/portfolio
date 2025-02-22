@@ -16,11 +16,13 @@ declare interface Review {
     comment: string
 }
 
+declare interface Detail {
+    picture: string,
+    description: string
+}
+
 declare interface ProjectData extends Project {
     techStack: Tech[],
-    details: {
-        picture: string,
-        description: string
-    }[],
+    details: Detail[],
     reviews: Review[]
 }

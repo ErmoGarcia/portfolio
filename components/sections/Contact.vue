@@ -1,5 +1,5 @@
 <template>
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section">
         <svg v-if="!success" class="contact__title" viewBox="0 0 422.5 72.201" xmlns="http://www.w3.org/2000/svg">
             <title>Contact title</title>
             <g>

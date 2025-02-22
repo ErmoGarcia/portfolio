@@ -1,5 +1,5 @@
 <template>
-    <section id="skills" class="skills">
+    <section id="skills" class="skills section">
         <h1>Skills</h1>
         <ul class="skills__list">
             <li v-for="group in skills" :key="group.category">

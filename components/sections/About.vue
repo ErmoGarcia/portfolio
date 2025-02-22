@@ -1,5 +1,5 @@
 <template>
-    <section id="about" class="about" :class="{ 'about--visible': isVisible }">
+    <section id="about" class="about section" :class="{ 'about--visible': isVisible }">
         <div>
             <h1 class="about__title">About Me</h1>
             <ul class="about__skills">

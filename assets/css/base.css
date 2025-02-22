@@ -33,7 +33,7 @@ header {
   height: min(90svh, 1200px);
 }
 
-section {
+.section {
   min-height: min(100svh, 1200px);
   max-width: var(--content-width);
   margin: 0 auto;

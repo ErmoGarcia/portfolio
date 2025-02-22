@@ -2,7 +2,15 @@
     <div v-if="project !== undefined">
         <ProjectHero :project="project" :tech-stack="project.techStack" />
         <article class="project">
+            <section class="project__description">
+                <h2>Description</h2>
+                <p>{{ project.description }}</p>
+            </section>
             <section>
+                <ProjectSlider :imgList="project.details" />
+            </section>
+            <section>
+                <ProjectReviews :reviews="project.reviews" />
             </section>
         </article>
     </div>
@@ -11,8 +19,6 @@
 <script setup lang="ts">
 const route = useRoute();
 const router = useRouter();
-
-
 
 const projectsData = new Map<string, ProjectData>()
 
@@ -50,22 +56,22 @@ projectsData.set('chatstats', {
     ],
     details: [
         {
-            picture: "/img/projects/stats.png",
-            description: "A tool to visualize chat statistics and relevant data from your Whatsapp and Telegram chats."
+            picture: "/img/projects/stats.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         },
         {
-            picture: "/img/projects/stats.png",
-            description: "A tool to visualize chat statistics and relevant data from your Whatsapp and Telegram chats."
+            picture: "/img/projects/stats.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         },
         {
-            picture: "/img/projects/stats.png",
-            description: "A tool to visualize chat statistics and relevant data from your Whatsapp and Telegram chats."
+            picture: "/img/projects/stats.jpg",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
         }
     ],
     reviews: [
         {
-            stars: 5,
-            comment: "This is a great project!"
+            stars: 4,
+            comment: "This is a great project! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         }
     ]
 })
@@ -136,7 +142,23 @@ if (project?.value === undefined) {
 
 <style scoped>
 .project, .project__header {
-    padding: 2rem;
     margin-block: 3rem;
+}
+
+.project__description {
+    max-width: min(var(--content-width), 90vw);
+    margin-inline: auto;
+    margin-block: 5rem;
+}
+
+.project__description h2 {
+    visibility: hidden;
+}
+
+.project__description p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: var(--clr-primary-light);
+    max-width: 50ch;
 }
 </style>
