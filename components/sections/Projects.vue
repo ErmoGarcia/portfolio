@@ -17,7 +17,10 @@
                 <div class="projects__content">
                     <h2>{{ project.title }}</h2>
                     <p>{{ project.description }}</p>
-                    <NuxtLink :href="`/projects/${project.name}`">
+                    <template v-if="project.unfinished">
+                        Coming soon...
+                    </template>
+                    <NuxtLink v-else :href="project.link" target="_blank">
                         <button>View</button>
                     </NuxtLink>
                 </div>
@@ -45,11 +48,12 @@ const projects = [
         link: 'https://github.com/ErmoGarcia/isa681project'
     },
     {
-        name: 'euriSudaderas',
-        title: 'Euri Sudaderas',
-        image: `${imgPath}/hoodies.jpg`,
-        description: 'An online store to by merchandising for Eurielec.',
-        link: 'https://github.com/Eurielec/euri_sudaderas'
+        id: 3,
+        title: 'Expense bot',
+        image: `${imgPath}/ai.jpg`,
+        description: 'A bot to register expenses, powered by an AI agent.',
+        link: '',
+        unfinished: true
     }
 ]
 </script>
